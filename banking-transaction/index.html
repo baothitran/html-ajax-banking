@@ -5,9 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Banking Transaction</title>
-    <!-- <link rel="stylesheet" href="style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous"> -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
         crossorigin="anonymous"></script>
@@ -15,10 +12,6 @@
     <link rel="stylesheet" href="./assets/fontawesome/v5.15.4/css/all.min.css">
     <link rel="stylesheet" href="./assets/sweetalert2/sweetalert2.min.css">
     <link rel="stylesheet" href="./assets/css/style.css">
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script> -->
 </head>
 
 <body>
@@ -35,7 +28,7 @@
                     </button>
                 </a>
 
-                <button class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#addModal">
+                <button class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#modalCreate">
                     <i class="fas fa-user-plus"></i>
                     Add new customer
                 </button>
@@ -44,7 +37,7 @@
         </header>
 
         <div class="content">
-            <table class="table table-hover">
+            <table class="table table-hover" id="tbCustomer">
                 <thead style="background-color: #4caf50;">
                     <tr>
                         <th>#</th>
@@ -56,52 +49,14 @@
                         <th colspan="5">Action</th>
                     </tr>
                 </thead>
-                <tbody id="tbodyCustomer">
+                <tbody>
 
-                    <tr>
-                        <td class="text-center">1</td>
-                        <td class="text-center">Bảo Thi</td>
-                        <td class="text-center">thi@gmail.com</td>
-                        <td class="text-center">0123654789</td>
-                        <td class="text-center">Huế</td>
-                        <td class="text-center">0</td>
-                        <td>
-                            <button title="Edit" type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
-                                data-bs-target="#editModal">
-                                <i class="fas fa-pencil-alt"></i>
-                            </button>
-                        </td>
-                        <td>
-                            <button title="Deposit" class="btn btn-outline-success" data-bs-toggle="modal"
-                                data-bs-target="#depositModal">
-                                <i class="fas fa-plus"></i>
-                            </button>
-                        </td>
-                        <td>
-                            <button title="Withdraw" class="btn btn-outline-info" data-bs-toggle="modal"
-                                data-bs-target="#withdrawModal">
-                                <i class="fas fa-minus"></i>
-                            </button>
-                        </td>
-                        <td>
-                            <button title="Transfer" class="btn btn-outline-warning" data-bs-toggle="modal"
-                                data-bs-target="#transferModal">
-                                <i class="fas fa-exchange-alt"></i>
-                            </button>
-                        </td>
-                        <td>
-                            <button title="Suspend" class="btn btn-outline-danger" data-bs-toggle="modal"
-                                data-bs-target="#suspendModal">
-                                <i class="fas fa-ban"></i>
-                            </button>
-                        </td>
-                    </tr>
                 </tbody>
             </table>
 
-            <!--add customer Modal -->
-            <div class="modal fade modal-lg" id="addModal" tabindex="-1" aria-labelledby="editModalLabel"
-                aria-hidden="true">
+            <!--create Modal -->
+            <div class="modal fade modal-lg" id="modalCreate" data-bs-backdrop="static" data-bs-keyboard="false"
+                tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -112,27 +67,28 @@
                             <div class="row mb-3">
                                 <div class="col-lg-6">
                                     <label class="fw-bold">Full Name</label>
-                                    <input type="text" class="form-control" name="fullName">
+                                    <input type="text" class="form-control" name="fullName" id="fullNameCre">
                                 </div>
                                 <div class="col-lg-6">
                                     <label class="fw-bold">Email</label>
-                                    <input type="email" class="form-control" name="email">
+                                    <input type="email" class="form-control" name="email" id="emailCre">
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <div class="col-lg-6">
                                     <label class="fw-bold">Phone</label>
-                                    <input type="tel" class="form-control" name="phone">
+                                    <input type="tel" class="form-control" name="phone" id="phoneCre">
                                 </div>
                                 <div class="col-lg-6">
                                     <label class="fw-bold">Address</label>
-                                    <input type="text" class="form-control" name="address">
+                                    <input type="text" class="form-control" name="address" id="addressCre">
                                 </div>
                             </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary" id="btnCreate">Create</button>
+                            <button type="button" class="btn btn-primary" id="btnCreate"><i
+                                    class="fas fa-plus"></i>Create</button>
                         </div>
                     </div>
                 </div>
@@ -152,40 +108,39 @@
                             <div class="row mb-3">
                                 <div class="col-lg-6">
                                     <label class="fw-bold">Full Name</label>
-                                    <input type="text" class="form-control" name="fullName">
+                                    <input type="text" class="form-control" name="fullName" id="fullNameUp">
                                 </div>
                                 <div class="col-lg-6">
                                     <label class="fw-bold">Email</label>
-                                    <input type="email" class="form-control" name="email">
+                                    <input type="email" class="form-control" name="email" id="emailUp">
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <div class="col-lg-6">
                                     <label class="fw-bold">Phone</label>
-                                    <input type="tel" class="form-control" name="phone">
+                                    <input type="tel" class="form-control" name="phone" id="phoneUp">
                                 </div>
                                 <div class="col-lg-6">
                                     <label class="fw-bold">Address</label>
-                                    <input type="text" class="form-control" name="address">
+                                    <input type="text" class="form-control" name="address" id="addressUp">
                                 </div>
-                            </div>
-                            <div hidden="true" class="row mb-3">
-                                <label class="col-2" for="balance">Balance</label>
-                                <div class="col-9">
-                                    <input type="number" name="balance" id="balance" class="form-control">
+                                <div hidden class="col-lg-6">
+                                    <label class="fw-bold">Balance</label>
+                                    <input type="text" class="form-control" name="balance" id="balanceUp">
                                 </div>
                             </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Edit</button>
+                            <button type="button" class="btn btn-primary" id="btnUpdate"><i
+                                    class="fas fa-pencil-alt"></i>Edit</button>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!--deposit  Modal -->
-            <div class="modal fade modal-lg" id="depositModal" tabindex="-1" aria-labelledby="editModalLabel"
+            <div class="modal fade modal-lg" id="modalDeposit" tabindex="-1" aria-labelledby="editModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -197,35 +152,48 @@
                             <div class="row mb-3">
                                 <div class="col-lg-6">
                                     <label class="fw-bold">Customer ID</label>
-                                    <input type="email" class="form-control" readonly>
+                                    <input type="email" class="form-control" id="idDeposit" readonly>
                                 </div>
                                 <div class="col-lg-6">
                                     <label class="fw-bold">Full Name</label>
-                                    <input type="text" class="form-control" readonly>
+                                    <input type="text" class="form-control" id="fullNameDeposit" readonly>
+                                </div>
+                                <div hidden="true" class="col-lg-6">
+                                    <label class="fw-bold">Phone</label>
+                                    <input type="text" class="form-control" id="phoneDeposit" readonly>
+                                </div>
+                                <div hidden="true" class="col-lg-6">
+                                    <label class="fw-bold">Email</label>
+                                    <input type="text" class="form-control" id="emailDeposit" readonly>
+                                </div>
+                                <div hidden="true" class="col-lg-6">
+                                    <label class="fw-bold">Address</label>
+                                    <input type="text" class="form-control" id="addressDeposit" readonly>
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <div class="col-lg-6">
                                     <label class="fw-bold">Current balance ($)</label>
-                                    <input type="text" class="form-control num-space" readonly>
+                                    <input type="text" class="form-control num-space" id="balanceDeposit" readonly>
                                 </div>
                                 <div class="col-lg-6">
                                     <label class="fw-bold">Transaction Amount ($)</label>
-                                    <input type="text" class="form-control num-space" name="transactionAmount">
+                                    <input type="text" class="form-control num-space" id="transactionAmountDeposit"
+                                        name="transactionAmount">
                                 </div>
                             </div>
 
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-success">Deposit</button>
+                            <button type="button" class="btn btn-success" id="btnDeposit">Deposit</button>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!--withdraw  Modal -->
-            <div class="modal fade modal-lg" id="withdrawModal" tabindex="-1" aria-labelledby="editModalLabel"
+            <div class="modal fade modal-lg" id="modalWithdraw" tabindex="-1" aria-labelledby="editModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -237,29 +205,40 @@
                             <div class="row mb-3">
                                 <div class="col-lg-6">
                                     <label class="fw-bold">Customer ID</label>
-                                    <input type="email" class="form-control" readonly>
+                                    <input type="email" class="form-control" id="idWithdraw" readonly>
                                 </div>
                                 <div class="col-lg-6">
                                     <label class="fw-bold">Full Name</label>
-                                    <input type="text" class="form-control" readonly>
+                                    <input type="text" class="form-control" id="fullNameWithdraw" readonly>
+                                </div>
+                                <div hidden class="col-lg-6">
+                                    <label class="fw-bold">Email</label>
+                                    <input type="text" class="form-control" id="emailWithdraw" readonly>
+                                </div>
+                                <div hidden class="col-lg-6">
+                                    <label class="fw-bold">Phone</label>
+                                    <input type="text" class="form-control" id="phoneWithdraw" readonly>
+                                </div>
+                                <div hidden class="col-lg-6">
+                                    <label class="fw-bold">Address</label>
+                                    <input type="text" class="form-control" id="addressWithdraw" readonly>
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <div class="col-lg-6">
                                     <label class="fw-bold">Current balance ($)</label>
-                                    <input type="text" class="form-control num-space" th:field="*{customer.balance}"
-                                        readonly>
+                                    <input type="text" class="form-control num-space" id="balanceWithdraw" readonly>
                                 </div>
                                 <div class="col-lg-6">
                                     <label class="fw-bold">Transaction Amount ($)</label>
-                                    <input type="text" class="form-control num-space" name="transactionAmount">
+                                    <input type="number" class="form-control num-space" id="transactionAmountWithdraw">
                                 </div>
                             </div>
 
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-info">Withdraw</button>
+                            <button type="button" class="btn btn-info" id="btnWithdraw">Withdraw</button>
                         </div>
                     </div>
                 </div>
@@ -277,48 +256,45 @@
                         <div class="modal-body">
                             <div class="row mt-3">
                                 <div class="mb-3 float-left col-lg-3 col-sm-12 col-md-6">
-                                    <label class="fw-bold" for="senderID" class="form-label">Sender ID</label>
-                                    <input type="number" class="form-control" id="senderID" th:value="${sender.id}"
-                                        readonly>
+                                    <label class="fw-bold" for="senderIDTransfer" class="form-label">Sender ID</label>
+                                    <input type="number" class="form-control" id="senderIDTransfer" readonly>
                                 </div>
                                 <div class="mb-3 float-left col-lg-3 col-sm-12 col-md-6">
-                                    <label class="fw-bold" for="senderName" class="form-label">Sender Name</label>
-                                    <input type="text" class="form-control" id="senderName"
-                                        th:value="${sender.fullName}" readonly>
+                                    <label class="fw-bold" for="senderNameTransfer" class="form-label">Sender
+                                        Name</label>
+                                    <input type="text" class="form-control" id="senderNameTransfer" readonly>
                                 </div>
                                 <div class="mb-3 float-left col-lg-3 col-sm-12 col-md-6">
-                                    <label class="fw-bold" for="email" class="form-label">Sender Email</label>
-                                    <input type="email" class="form-control" id="email" th:value="${sender.email}"
-                                        readonly>
+                                    <label class="fw-bold" for="emailTransfer" class="form-label">Sender Email</label>
+                                    <input type="email" class="form-control" id="emailTransfer" readonly>
                                 </div>
                                 <div class="mb-3 float-left col-lg-3 col-sm-12 col-md-6">
-                                    <label class="fw-bold" for="balance" class="form-label">Sender Balance</label>
-                                    <input type="number" class="form-control num-space" id="balance"
-                                        th:value="${sender.balance}" readonly>
+                                    <label class="fw-bold" for="balanceTransfer" class="form-label">Sender
+                                        Balance</label>
+                                    <input type="number" class="form-control num-space" id="balanceTransfer" readonly>
                                 </div>
                             </div>
                             <div class="row mt-3">
                                 <div class="mb-3 float-left col-lg-3 col-sm-12 col-md-6">
-                                    <label for="recipientName" class="form-label fw-bold">Recipient Name</label>
-                                    <select id="recipientName" name="recipientId" class="form-control">
-                                        <th:block th:each="recipient :${recipients}">
-                                            <option th:value="*{recipient.id}" th:text="*{recipient.fullName}"></option>
-                                        </th:block>
+                                    <label for="recipientNameTransfer" class="form-label fw-bold">Recipient Name</label>
+                                    <select id="recipientNameTransfer" name="recipientId" class="form-control">
+                                        <option th:value="*{recipient.id}" th:text="*{recipient.fullName}"></option>
                                     </select>
                                 </div>
                                 <div class="mb-3 float-left col-lg-3 col-sm-12 col-md-6">
-                                    <label for="transfer" class="form-label fw-bold">Transfer Amount (VND)</label>
-                                    <input type="number" class="form-control num-space" id="transfer" name="transfer"
-                                        value="0">
+                                    <label for="amountTransfer" class="form-label fw-bold">Transfer Amount (VND)</label>
+                                    <input type="number" class="form-control num-space" id="amountTransfer"
+                                        name="transfer" value="0">
                                 </div>
                                 <div class="mb-3 float-left col-lg-3 col-sm-12 col-md-6">
-                                    <label for="fees" class="form-label fw-bold">Fee (%)</label>
-                                    <input type="number" class="form-control num-space" id="fees" name="fees" value="10"
+                                    <label for="feesTransfer" class="form-label fw-bold">Fee (%)</label>
+                                    <input type="number" class="form-control num-space" id="feesTransfer" name="fees"
+                                        value="10" readonly>
+                                </div>
+                                <div class="mb-3 float-left col-lg-3 col-sm-12 col-md-6">
+                                    <label for="totalTransfer" class="form-label fw-bold">Total Amount (VND)</label>
+                                    <input type="number" class="form-control num-space" id="totalTransfer" value="0"
                                         readonly>
-                                </div>
-                                <div class="mb-3 float-left col-lg-3 col-sm-12 col-md-6">
-                                    <label for="total" class="form-label fw-bold">Total Amount (VND)</label>
-                                    <input type="number" class="form-control num-space" id="total" value="0" readonly>
                                 </div>
                             </div>
 
@@ -343,26 +319,31 @@
                             <div class="row mt-3">
                                 <input type="hidden" name="id">
                                 <div class="col-md-6 mb-3">
-                                    <label for="fullName" class="form-label fw-bold">Full Name</label>
-                                    <input type="text" class="form-control" id="fullName" name="name" readonly>
+                                    <label for="fullNameSuspend" class="form-label fw-bold">Full Name</label>
+                                    <input type="text" class="form-control" id="fullNameSuspend" name="nameSuspend"
+                                        readonly>
                                 </div>
                                 <div hidden="true" class="col-md-6 mb-3">
-                                    <label for="balance" class="form-label fw-bold">Balance</label>
-                                    <input type="text" class="form-control" id="balance" name="balance" readonly>
+                                    <label for="balanceSuspend" class="form-label fw-bold">Balance</label>
+                                    <input type="text" class="form-control" id="balanceSuspend" name="balanceSuspend"
+                                        readonly>
                                 </div>
                                 <div class="col-md-6 mb-3">
-                                    <label for="email" class="form-label fw-bold">Email</label>
-                                    <input type="email" class="form-control" id="email" name="email" readonly>
+                                    <label for="emailSuspend" class="form-label fw-bold">Email</label>
+                                    <input type="email" class="form-control" id="emailSuspend" name="emailSuspend"
+                                        readonly>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6 mb-3">
-                                    <label for="phone" class="form-label fw-bold">Phone Number</label>
-                                    <input type="text" class="form-control" id="phone" name="phone" readonly>
+                                    <label for="phoneSuspend" class="form-label fw-bold">Phone Number</label>
+                                    <input type="text" class="form-control" id="phoneSuspend" name="phoneSuspend"
+                                        readonly>
                                 </div>
                                 <div class="col-md-6 mb-3">
-                                    <label for="address" class="form-label fw-bold">Address</label>
-                                    <input type="text" class="form-control" id="address" name="address" readonly>
+                                    <label for="addressSuspend" class="form-label fw-bold">Address</label>
+                                    <input type="text" class="form-control" id="addressSuspend" name="addressSuspend"
+                                        readonly>
                                 </div>
                             </div>
 
@@ -379,60 +360,39 @@
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.7.12/sweetalert2.all.min.js"></script>
-    <script src="./assets/jquery/jquery-3.6.4.min.js"></script>
+    <!-- <script src="./assets/jquery/jquery-3.6.4.min.js"></script> -->
     <script type="text/javascript" src="./assets/js/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="./assets/js/popper-v1.16.0.min.js"></script>
-    <script type="text/javascript" src="./assets/js/jquery.number.js"></script>
+    <!-- <script type="text/javascript" src="./assets/js/jquery.number.js"></script> -->
     <script type="text/javascript" src="./assets/js/app.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </body>
 <script>
-    let Customers = [
-        {
-            id: "1",
-            name: "Thi",
-            email: "thi@gmail.com",
-            phone: "1234",
-            balance: "0",
-            address: "28 NTP",
-        },
-        {
-            id: "2",
-            name: "Thi1",
-            email: "thi1@gmail.com",
-            phone: "3456",
-            balance: "0",
-            address: "29 NTP",
-        },
-        {
-            id: "3",
-            name: "Thi2",
-            email: "thi2@gmail.com",
-            phone: "6789",
-            balance: "0",
-            address: "30 NTP",
-        }
-    ]
-    function renderInformation(obj) {
+    let maxId = 1;
+    let customerId = 0;
+    let customer = {};
+
+    function renderCustomer(obj) {
         return `
-    <tr>
+    <tr id="tr_${obj.id}">
         <td >${obj.id}</td>
-        <td class="text-center">${obj.name}</td>
+        <td class="text-center">${obj.fullName}</td>
         <td class="text-center">${obj.email}</td>
         <td class="text-center">${obj.phone}</td>
-        <td class="text-center">${obj.balance}</td>
         <td class="text-center">${obj.address}</td>
+        <td class="text-center">${obj.balance}</td>
+
+
         <td class="text-center">
-            <button class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#modalUpdate">
+            <button class="btn btn-outline-secondary edit" data-id="${obj.id}">
                 <i class="fas fa-pencil-alt"></i>
             </button>
             </td>
             <td class="text-center">
-            <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#depositModal">
+            <button class="btn btn-outline-success deposit" data-id="${obj.id}">
                 <i class="fas fa-plus"></i>
             </button>
             <td class="text-center">
-            <button class="btn btn-outline-primary " data-bs-toggle="modal" data-bs-target="#withdrawModal">
+            <button class="btn btn-outline-primary withdraw " data-id="${obj.id}">
                 <i class="fas fa-minus"></i>
             </button>
             </td>
@@ -442,45 +402,361 @@
             </button>
             </td>
             <td class="text-center">
-            <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#suspendModal">
+            <button class="btn btn-outline-danger delete" >
                 <i class="fas fa-ban"></i>
             </button>
         </td>
     </tr>
 `;
     }
-    function getAllCustomer() {
-        let str = "";
-        $.each(Customers, (index, item) => {
-            str += renderInformation(item);
-        })
-        console.log(str);
-        document.getElementById("tbodyCustomer").innerHTML = str;
-    }
-    getAllCustomer();
+    // function getAllCustomer() {
+    //     let str = "";
+    //     $.each(Customers, (index, item) => {
+    //         str += renderInformation(item);
+    //     })
+    //     console.log(str);
+    //     document.getElementById("tbodyCustomer").innerHTML = str;
+    // }
+    // getAllCustomer();
+    function getAllCustomers() {
+        const tbCustomerBody = $('#tbCustomer tbody')
 
-    $('#btnCreate').on('click', () => {
-        let fullName = $('#fullNameCre').val();
-        let email = $('#emailCre').val();
-        let phone = $('#phoneCre').val();
-        let address = $('#addressCre').val();
-        let balance = 0
-        let customer = {
-            id,
+        tbCustomerBody.empty();
+
+        $.ajax({
+            type: 'GET',
+            url: 'http://localhost:3300/customers?deleted=0'
+        })
+            .done((data) => {
+                data.forEach(item => {
+                    const str = renderCustomer(item);
+                    tbCustomerBody.prepend(str);
+
+                    handleAddEventShowModalUpdate();
+                    handleAddEventShowModalDeposit();
+                    handleAddEventShowModalWithdraw();
+                });
+            })
+            .fail((error) => {
+                console.log(error);
+            })
+    }
+
+    getAllCustomers();
+
+    const btnCreate = $('#btnCreate');
+    btnCreate.on('click', function () {
+        const fullName = $('#fullNameCre').val();
+        const email = $('#emailCre').val();
+        const phone = $('#phoneCre').val();
+        const address = $('#addressCre').val();
+        const balance = 0;
+        const deleted = 0;
+
+        const obj = {
             fullName,
             email,
             phone,
             address,
             balance,
+            deleted
         }
-        ++id;
-        customers.push(customer);
-        let str = renderInformation(item);
-        $('#tbCustomer tbody').prepend(str);
-        addEventEdit();
-        addEventDeposit();
-        addEventDelete();
+
+        $.ajax({
+            headers: {
+                'accept': 'application/json',
+                'content-type': 'application/json'
+            },
+            type: 'POST',
+            url: 'http://localhost:3300/customers',
+            data: JSON.stringify(obj)
+        })
+            .done((data) => {
+
+                const str = renderCustomer(data);
+                const tbCustomerBody = $('#tbCustomer tbody');
+                tbCustomerBody.prepend(str);
+
+                $('#modalCreate').modal('hide');
+
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Thêm mới thành công',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+
+            })
+            .fail((error) => {
+                console.log(error);
+            })
+
     })
+
+    function getCustomerById(id) {
+        return $.ajax({
+            type: 'GET',
+            url: 'http://localhost:3300/customers/' + id,
+        });
+    }
+
+
+    function findCustomerIndexById(id) {
+        let index = -1;
+
+        for (let i = 0; i < customers.length; i++) {
+            if (customers[i].id === id) {
+                index = i;
+            }
+        }
+
+        return index;
+    }
+
+
+    function handleAddEventShowModalUpdate() {
+        let btnEdit = $('.edit');
+        btnEdit.off('click');
+
+        btnEdit.on('click', function () {
+            customerId = $(this).data('id');
+
+            const modalUpdate = $('#modalUpdate');
+
+            getCustomerById(customerId).then((data) => {
+
+                $('#fullNameUp').val(data.fullName);
+                $('#emailUp').val(data.email);
+                $('#phoneUp').val(data.phone);
+                $('#addressUp').val(data.address);
+
+                modalUpdate.modal('show');
+            })
+                .catch((error) => {
+                    console.log(error);
+                });
+        })
+    }
+
+
+
+    const btnUpdate = $('#btnUpdate');
+    btnUpdate.on('click', () => {
+        const fullName = $('#fullNameUp').val();
+        const email = $('#emailUp').val();
+        const phone = $('#phoneUp').val();
+        const address = $('#addressUp').val();
+
+        const obj = {
+            fullName,
+            email,
+            phone,
+            address
+        }
+
+        update(obj);
+    })
+
+    function update(obj) {
+        $.ajax({
+            headers: {
+                'accept': 'application/json',
+                'content-type': 'application/json'
+            },
+            type: 'PATCH',
+            url: 'http://localhost:3300/customers/' + customerId,
+            data: JSON.stringify(obj)
+        })
+            .done((data) => {
+                const str = renderCustomer(data);
+
+                const currentRow = $('#tr_' + customerId);
+                currentRow.replaceWith(str);
+
+                $('#modalUpdate').modal('hide');
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Cập nhật thành công',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            })
+            .fail((error) => {
+                console.log(error);
+            })
+    }
+
+
+    function handleAddEventShowModalDeposit() {
+        let btnDeposit = $('.deposit');
+        btnDeposit.on('click', function () {
+            customerId = $(this).data('id');
+
+            const modalDeposit = $('#modalDeposit');
+
+            getCustomerById(customerId).then((data) => {
+                customer = data;
+                $('#fullNameDeposit').val(customer.fullName);
+                $('#idDeposit').val(customer.id);
+                $('#balanceDeposit').val(customer.balance);
+
+                modalDeposit.modal('show');
+            })
+                .catch((error) => {
+                    console.log(error);
+                });
+        })
+    }
+
+    const btnDeposit = $('#btnDeposit');
+    btnDeposit.on('click', () => {
+
+        const currentBalance = customer.balance;
+        const transactionAmount = +$('#transactionAmountDeposit').val();
+        const newBalance = currentBalance + transactionAmount;
+        customer.balance = newBalance;
+
+        $.ajax({
+            headers: {
+                'accept': "application/json",
+                'content-type': 'application/json'
+            },
+            type: 'PATCH',
+            url: 'http://localhost:3300/customers/' + customerId,
+            data: JSON.stringify(customer)
+        })
+            .done((data) => {
+                const str = renderCustomer(data);
+
+                const currentRow = $('#tr_' + customerId);
+                currentRow.replaceWith(str);
+
+                handleAddEventShowModalUpdate();
+                handleAddEventShowModalDeposit();
+                handleAddEventShowModalWithdraw();
+
+                $('#modalDeposit').modal('hide');
+
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Nạp tiền thành công',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            })
+            .fail((error) => {
+                console.log(error);
+            })
+
+        const obj = {
+            customerId,
+            transactionAmount
+        }
+
+        $.ajax({
+            headers: {
+                'accept': "application/json",
+                'content-type': 'application/json'
+            },
+            type: 'POST',
+            url: 'http://localhost:3300/deposits',
+            data: JSON.stringify(obj)
+        })
+            .done((data) => {
+
+            })
+            .fail((error) => {
+                console.log(error);
+            })
+    });
+
+
+
+    function handleAddEventShowModalWithdraw() {
+        let btnWithdraw = $('.withdraw');
+        btnWithdraw.on('click', function () {
+            customerId = $(this).data('id');
+
+            const modalWithdraw = $('#modalWithdraw');
+            getCustomerById(customerId).then((data) => {
+                customer = data;
+                $('#fullNameWithdraw').val(customer.fullName);
+                $('#idWithdraw').val(customer.id);
+                $('#balanceWithdraw').val(customer.balance);
+                modalWithdraw.modal('show');
+            })
+                .catch((error) => {
+                    console.log(error);
+                })
+        });
+    }
+
+
+    const btnWithdraw = $('#btnWithdraw');
+    btnWithdraw.on('click', () => {
+        const currentBalance = customer.balance;
+        const transactionAmount = +$('#transactionAmountWithdraw').val();
+        const newBalance = currentBalance - transactionAmount;
+        customer.balance = newBalance;
+
+        $.ajax({
+            headers: {
+                'accept': "application/json",
+                'content-type': 'application/json'
+            },
+            type: 'PATCH',
+            url: 'http://localhost:3300/customers/' + customerId,
+            data: JSON.stringify(customer)
+        })
+            .done((data) => {
+                const str = renderCustomer(data);
+
+                const currentRow = $('#tr_' + customerId);
+                currentRow.replaceWith(str);
+
+                handleAddEventShowModalUpdate();
+                handleAddEventShowModalDeposit();
+                handleAddEventShowModalWithdraw();
+
+                $('#modalWithdraw').modal('hide');
+
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Rút tiền thành công',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            })
+            .fail((error) => {
+                console.log(error);
+            })
+
+        const obj = {
+            customerId,
+            transactionAmount
+        }
+
+        $.ajax({
+            headers: {
+                'accept': "application/json",
+                'content-type': 'application/json'
+            },
+            type: 'POST',
+            url: 'http://localhost:3300/withdraws',
+            data: JSON.stringify(obj)
+        })
+            .done((data) => {
+
+            })
+            .fail((error) => {
+                console.log(error);
+            })
+    })
+
 </script>
 
 </html>

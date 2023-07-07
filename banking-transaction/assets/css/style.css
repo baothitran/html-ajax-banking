@@ -1,4 +1,4 @@
-header{
+header {
     background-color: #299be4;
     height: 80px;
     color: #fff;
@@ -6,17 +6,20 @@ header{
     align-items: center;
     padding: 0 10px;
 }
-.header-right-button{
+
+.header-right-button {
     display: flex;
     justify-content: end;
     gap: 8px;
 }
-.content table thead tr{
+
+.content table thead tr {
     background-color: #4caf50;
     color: #fff;
     font-weight: bold;
     text-align: center;
 }
+
 footer {
     position: fixed !important;
     bottom: 0;
@@ -24,4 +27,8 @@ footer {
     height: auto;
     margin-bottom: 0 !important;
     width: 100%;
+}
+
+.swal-height {
+    height: 80vh;
 }

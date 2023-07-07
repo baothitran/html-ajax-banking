@@ -40,10 +40,10 @@ class Customer {
     }
 }
 
-$(function() {
-    $(".num-space").number(true, 0, ',', ' ');
-    $(".num-point").number(true, 0, ',', '.');
-    $(".num-comma").number(true, 0, ',', ',');
+// $(function() {
+//     $(".num-space").number(true, 0, ',', ' ');
+//     $(".num-point").number(true, 0, ',', '.');
+//     $(".num-comma").number(true, 0, ',', ',');
 
-    $('[data-toggle="tooltip"]').tooltip();
-});
+//     $('[data-toggle="tooltip"]').tooltip();
+// });
