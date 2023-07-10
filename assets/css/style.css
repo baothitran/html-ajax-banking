@@ -4,20 +4,23 @@ header {
     color: #fff;
     display: flex;
     align-items: center;
-    padding: 0 10px;
+    padding: 0 10px
 }
 
 .header-right-button {
     display: flex;
     justify-content: end;
-    gap: 8px;
+    gap: 10px;
 }
 
-.content table thead tr {
+.content table thead tr th {
     background-color: #4caf50;
     color: #fff;
     font-weight: bold;
-    text-align: center;
+}
+
+span.error {
+    color: red;
 }
 
 footer {
@@ -27,8 +30,4 @@ footer {
     height: auto;
     margin-bottom: 0 !important;
     width: 100%;
-}
-
-.swal-height {
-    height: 80vh;
 }

@@ -1,43 +1,67 @@
 class App {
-    static showDeleteConfirmDialog() {
-        return Swal.fire({
-            icon: 'warning',
-            text: 'Are you sure you want to delete the selected data ?',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it !',
-            cancelButtonText: 'Cancel',
-        })
-    }
+  static DOMAIN_SERVER = 'http://localhost:3300';
+  static API_SERVER = 'http://localhost:3300';
 
-    static showSuccessAlert(t) {
-        Swal.fire({
-            icon: 'success',
-            title: t,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 1500
-        })
-    }
+  static API_CUSTOMER = this.API_SERVER + '/customers';
+  static API_DEPOSIT = this.API_SERVER + '/deposits';
+  static API_WITHDRAW = this.API_SERVER + '/withdraws';
 
-    static showErrorAlert(t) {
-        Swal.fire({
-            icon: 'error',
-            title: 'Warning',
-            text: t,
-        })
-    }
+  static showDeleteConfirmDialog() {
+    return Swal.fire({
+      icon: 'warning',
+      text: 'Are you sure you want to delete the selected data ?',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it !',
+      cancelButtonText: 'Cancel',
+    });
+  }
+
+  static showSuccessAlert(t) {
+    Swal.fire({
+      icon: 'success',
+      title: t,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 1500,
+    });
+  }
+
+  static showErrorAlert(t) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Warning',
+      text: t,
+    });
+  }
 }
 
 class Customer {
-    constructor(id, fullName, email, phone, province) {
-        this.id = id;
-        this.fullName = fullName;
-        this.email = email;
-        this.phone = phone;
-        this.province = province;
-    }
+  constructor(id, fullName, email, phone, balance, address) {
+    this.id = id;
+    this.fullName = fullName;
+    this.email = email;
+    this.phone = phone;
+    this.balance = balance;
+    this.address = address;
+  }
+}
+
+class Deposit {
+  constructor(id, customerId, transactionAmount) {
+    this.id = id;
+    this.customerId = customerId;
+    this.transactionAmount = transactionAmount;
+  }
+}
+
+class Withdraw {
+  constructor(id, customerId, transactionAmount) {
+    this.id = id;
+    this.customerId = customerId;
+    this.transactionAmount = transactionAmount;
+  }
 }
 
 // $(function() {
